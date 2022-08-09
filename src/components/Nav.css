@@ -1,0 +1,16 @@
+.nav {
+    height:65px;
+    padding:50px;
+    background-color:black;
+    color:white;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.nav h1 {
+    font-size:2rem;
+}
+.nav img {
+    height: 75px;
+    margin-right:24px;
+}

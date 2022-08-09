@@ -1,0 +1,11 @@
+.scoreBoard {
+    height:50px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.scoreBoard p {
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin:24px;
+}
