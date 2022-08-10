@@ -19,68 +19,98 @@ function Game(props) {
         {
         img:wPawn,
         desc:'White Pawn',
+        key:'wPawn',
         },
         {
         img:bPawn,
-        desc:'Black Pawn'
+        desc:'Black Pawn',
+        key:'bPawn',
         },
         {
         img:wKnight,
-        desc:'White Knight'
+        desc:'White Knight',
+        key:'wKnight',
         },
         {
         img:bKnight,
-        desc:'Black Knight'
+        desc:'Black Knight',
+        key:'bKnight',
         },
         {
         img:wBishop,
-        desc:'White Bishop'
+        desc:'White Bishop',
+        key:'wBishop',
         },
         {
         img:bBishop,
-        desc:'Black Bishop'
+        desc:'Black Bishop',
+        key:'bBishop',
         },
         {
         img:wRook,
-        desc:'White Rook'
+        desc:'White Rook',
+        key:'wRook',
         },
         {
         img:bRook,
-        desc:'Black Rook'
+        desc:'Black Rook',
+        key:'bRook',
         },
         {
         img:wKing,
-        desc:'White King'
+        desc:'White King',
+        key:'wKing',
         },
         {
         img:bKing,
-        desc:'Black King'
+        desc:'Black King',
+        key:'bKing',
         },
         {
         img:wQueen,
-        desc:'White Queen'
+        desc:'White Queen',
+        key:'wQueen',
         },
         {
         img:bQueen,
-        desc:'Black Queen'
+        desc:'Black Queen',
+        key:'bQueen',
         },
     ];
+    const [cards,setCards] = useState([]);
+    const [clickedArray,clickedArrayUpdate] = useState([]);
     useEffect(()=> {
+        props.reset();
         const createCard = [...defaultCard].sort(() => Math.random() - 0.5);
         setCards(createCard);
     },[]);
-    const [cards,setCards] = useState([]);
+    useEffect(()=>{console.log(clickedArray)},[clickedArray]);
     function shuffleCard() {
         const newCards = [...cards].sort(() => Math.random() - 0.5);
         setCards(newCards);
-        console.log(cards);
+    }
+    function checkLose(val) {
+        if (clickedArray.includes(val)) {
+            props.updateLoseFunction();
+        } else {
+            props.update();
+        }
+    }
+    function getCardInfo(e) {
+        const cardValue = e.currentTarget.getAttribute('value');
+        checkLose(cardValue);
+        clickedArrayUpdate([...clickedArray].concat(cardValue));
+    }
+    function gameFunction(e) {
+        shuffleCard();
+        getCardInfo(e);
     }
     return(
         <div className='game'>
             <div className='cardList'>
                 {cards.map((card) => {
                     return(
-                        <div className='card' key={Math.random()} onClick={shuffleCard}>
+                        <div className='card' key={card.key} onClick={gameFunction} value={card.key}>
                             <img src={card.img}></img>
                             <p>{card.desc}</p>
                         </div>

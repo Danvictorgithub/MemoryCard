@@ -1,0 +1,31 @@
+.gameOver {
+    height:87.5vh;
+    padding:36px;
+}
+.gameOver h2 {
+    text-align: center;
+    font-size: 10rem;
+    border-bottom:3px solid black;
+}
+.gameOver p {
+    margin-top: 24px;
+    margin-bottom:36px;
+    font-size: 4rem;
+    text-align: center;
+}
+.gameOver button {
+    width: 100%;
+    height:40vh;
+    border:0;
+    background-color: white;
+    font-size: 4rem;
+    font-weight: 600;
+    border:4px solid black;
+}
+.gameOver button:hover {
+    background-color:gray;
+    color:white;
+}
+.gameOver button:active {
+    background-color:black;
+}
